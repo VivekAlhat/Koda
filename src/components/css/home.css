@@ -20,10 +20,24 @@
   height: max-content;
 }
 
-.trending .card {
+.card {
+  margin: 1.5em 3em !important;
+}
+
+/* .trending .card {
   transition: all ease-in-out 1s;
 }
 
 .trending .card:hover {
   transform: translateY(-10px);
+} */
+
+@media only screen and (max-width: 600px) {
+  .home {
+    padding: 1em;
+  }
+
+  .card {
+    margin: 1em !important;
+  }
 }

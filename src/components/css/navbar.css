@@ -36,3 +36,13 @@
 .navbar ul li:hover {
   color: #7868e6;
 }
+
+@media only screen and (max-width: 600px) {
+  #logo {
+    font-size: 1.5em;
+  }
+
+  .navbar ul li {
+    font-size: 1em;
+  }
+}
