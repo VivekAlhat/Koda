@@ -1,0 +1,19 @@
+.about {
+  position: relative;
+  top: 5em;
+  z-index: 9;
+  padding: 1em 10em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about h2 {
+  font-size: 2.5em;
+}
+
+.about p {
+  font-size: 1.2em;
+}

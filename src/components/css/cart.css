@@ -1,0 +1,6 @@
+.cart {
+  position: relative;
+  top: 5em;
+  z-index: 9;
+  padding: 1em 3em;
+}
