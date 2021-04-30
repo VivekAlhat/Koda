@@ -17,7 +17,18 @@
 }
 
 .trending .card .content {
-  height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.hidden {
+  align-items: center;
+}
+
+#productTitle {
+  color: #1e1e1e;
+  text-decoration: none;
 }
 
 .card {

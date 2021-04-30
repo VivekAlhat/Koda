@@ -1,5 +1,6 @@
 import axios from "axios";
 import useStore from "../store/store";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Card, Loader, Button, Icon, Grid } from "semantic-ui-react";
 import "./css/home.css";
@@ -33,7 +34,11 @@ const Home = () => {
               <Card
                 key={item.id}
                 image={item.image}
-                header={item.title}
+                header={
+                  <Link to={`/products/${item.id}`}>
+                    <h3 id="productTitle">{item.title}</h3>
+                  </Link>
+                }
                 description={"Price: $" + item.price}
                 extra={
                   <Button
