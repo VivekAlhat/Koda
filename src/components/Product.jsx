@@ -2,11 +2,14 @@ import axios from "axios";
 import useStore from "../store/store";
 import { useEffect, useState } from "react";
 import { Loader, Grid, Image, Button } from "semantic-ui-react";
+import { ToastContainer, toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import "./css/product.css";
 
 const Product = () => {
   let { id } = useParams();
+  const notify = () =>
+    toast("Ready For Checkout", { position: "bottom-right", type: "dark" });
   const addToCart = useStore((state) => state.addToCart);
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
@@ -23,6 +26,7 @@ const Product = () => {
 
   return (
     <div className="product">
+      <ToastContainer />
       {loading ? (
         <div className="loading">
           <Loader active inline="centered" />
@@ -60,7 +64,10 @@ const Product = () => {
             <Button
               color="violet"
               className="buy_btn"
-              onClick={() => addToCart(id)}
+              onClick={() => {
+                notify();
+                addToCart(id);
+              }}
             >
               Buy Now
             </Button>

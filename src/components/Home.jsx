@@ -2,10 +2,13 @@ import axios from "axios";
 import useStore from "../store/store";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { Card, Loader, Button, Icon, Grid } from "semantic-ui-react";
 import "./css/home.css";
 
 const Home = () => {
+  const notify = () =>
+    toast("Ready For Checkout", { position: "bottom-right", type: "dark" });
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
 
@@ -29,6 +32,7 @@ const Home = () => {
         </div>
       ) : (
         <div className="trending">
+          <ToastContainer />
           <Grid container columns={3}>
             {products.map((item) => (
               <Card
@@ -41,17 +45,26 @@ const Home = () => {
                 }
                 description={"Price: $" + item.price}
                 extra={
-                  <Button
-                    color="violet"
-                    animated
-                    fluid
-                    onClick={() => addToCart(item.id)}
-                  >
-                    <Button.Content visible>Add To Cart</Button.Content>
-                    <Button.Content hidden>
-                      <Icon name="shop" />
-                    </Button.Content>
-                  </Button>
+                  <div>
+                    <Button.Group widths="5">
+                      <Link to={`/products/${item.id}`}>
+                        <Button>Details</Button>
+                      </Link>
+                      <Button
+                        color="violet"
+                        animated
+                        onClick={() => {
+                          notify();
+                          addToCart(item.id);
+                        }}
+                      >
+                        <Button.Content visible>Add To Cart</Button.Content>
+                        <Button.Content hidden>
+                          <Icon name="shop" />
+                        </Button.Content>
+                      </Button>
+                    </Button.Group>
+                  </div>
                 }
               />
             ))}
