@@ -1,4 +1,5 @@
 import axios from "axios";
+import useStore from "../store/store";
 import { useEffect, useState } from "react";
 import { Loader, Grid, Image, Button } from "semantic-ui-react";
 import { useParams } from "react-router-dom";
@@ -6,6 +7,7 @@ import "./css/product.css";
 
 const Product = () => {
   let { id } = useParams();
+  const addToCart = useStore((state) => state.addToCart);
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -55,7 +57,11 @@ const Product = () => {
             <p>
               <span style={{ fontWeight: "700" }}>Price: </span>${product.price}
             </p>
-            <Button color="violet" className="buy_btn">
+            <Button
+              color="violet"
+              className="buy_btn"
+              onClick={() => addToCart(id)}
+            >
               Buy Now
             </Button>
           </Grid.Column>

@@ -47,7 +47,7 @@ const Home = () => {
                     fluid
                     onClick={() => addToCart(item.id)}
                   >
-                    <Button.Content visible>Buy Now</Button.Content>
+                    <Button.Content visible>Add To Cart</Button.Content>
                     <Button.Content hidden>
                       <Icon name="shop" />
                     </Button.Content>
