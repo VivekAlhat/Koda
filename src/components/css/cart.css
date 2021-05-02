@@ -2,5 +2,59 @@
   position: relative;
   top: 5em;
   z-index: 9;
-  padding: 1em 3em;
+  padding: 1em 5em;
+  margin-bottom: 3em !important;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+.cartItem {
+  padding: 2em 0 !important;
+}
+
+.cartContent {
+  padding-left: 3em !important;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-bottom: 2em;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty Button {
+  margin-top: 1em !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .cart {
+    padding: 1em;
+  }
+
+  .cartItem {
+    display: flex !important;
+    flex-direction: column;
+    padding: 2em 1em !important;
+  }
+
+  .cartContent {
+    padding: 1em 0 !important;
+  }
+
+  .checkout {
+    padding: 1em;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 }
