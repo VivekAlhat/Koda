@@ -1,6 +1,6 @@
 # KODA
 
-### E-Store created using react and zustand for state management
+E-Store created using react and zustand for state management
 
 ## To-Do
 
