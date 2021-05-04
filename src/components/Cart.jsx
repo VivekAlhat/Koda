@@ -7,12 +7,13 @@ import "./css/cart.css";
 const Cart = () => {
   const history = useHistory();
   const cart = useStore((state) => state.cart);
+  const addToCart = useStore((state) => state.addToCart);
   const removeFromCart = useStore((state) => state.removeFromCart);
   const clearCart = useStore((state) => state.clearCart);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {}, 1000);
+    // setTimeout(() => {}, 1000);
     cart.map((item) =>
       setTotal((prev) => prev + item.product.price * item.quantity)
     );
@@ -33,22 +34,33 @@ const Cart = () => {
                     <h3>{product.title}</h3>
                     <p>Quantity: {quantity}</p>
                     <p>Price: ${product.price}</p>
-                    <Button
-                      size="small"
-                      color="black"
-                      onClick={() => {
-                        removeFromCart();
-                      }}
-                    >
-                      Remove
-                    </Button>
+                    <div>
+                      <Button
+                        size="small"
+                        color="black"
+                        onClick={() => {
+                          addToCart(itemId);
+                        }}
+                      >
+                        +
+                      </Button>
+                      <Button
+                        size="small"
+                        color="black"
+                        onClick={() => {
+                          removeFromCart(itemId);
+                        }}
+                      >
+                        Remove
+                      </Button>
+                    </div>
                   </List.Content>
                 </List.Item>
               );
             })}
           </List>
           <div className="checkout">
-            <p>Total: ${total}</p>
+            <p>Total: ${total.toFixed(2)}</p>
             <div className="checkout-btn">
               <Button
                 size="large"

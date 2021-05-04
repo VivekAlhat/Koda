@@ -25,8 +25,9 @@ const store = (set, get) => ({
     }
   },
   removeFromCart: (id) => {
+    // console.log(id);
     set((state) => ({
-      cart: [state.cart.filter((item) => item.itemId !== id)],
+      cart: state.cart.filter((item) => item.itemId !== id),
     }));
   },
   clearCart: () => {
