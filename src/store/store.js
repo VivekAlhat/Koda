@@ -24,6 +24,19 @@ const store = (set, get) => ({
       });
     }
   },
+  decreaseQuantity: (id) => {
+    let cart = get().cart;
+    if (cart.find((item) => item.itemId === id).quantity < 2) {
+      set((state) => ({
+        cart: [],
+      }));
+    } else {
+      set((state) => {
+        state.cart[state.cart.findIndex((item) => item.itemId === id)]
+          .quantity--;
+      });
+    }
+  },
   removeFromCart: (id) => {
     // console.log(id);
     set((state) => ({

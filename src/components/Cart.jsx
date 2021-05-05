@@ -8,6 +8,7 @@ const Cart = () => {
   const history = useHistory();
   const cart = useStore((state) => state.cart);
   const addToCart = useStore((state) => state.addToCart);
+  const decreaseQuantity = useStore((state) => state.decreaseQuantity);
   const removeFromCart = useStore((state) => state.removeFromCart);
   const clearCart = useStore((state) => state.clearCart);
   const [total, setTotal] = useState(0);
@@ -52,6 +53,15 @@ const Cart = () => {
                         }}
                       >
                         Remove
+                      </Button>
+                      <Button
+                        size="small"
+                        color="black"
+                        onClick={() => {
+                          decreaseQuantity(itemId);
+                        }}
+                      >
+                        -
                       </Button>
                     </div>
                   </List.Content>
