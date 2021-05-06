@@ -22,6 +22,7 @@ const store = (set, get) => ({
         state.cart[state.cart.findIndex((item) => item.itemId === id)]
           .quantity++;
       });
+      window.location.reload();
     }
   },
   decreaseQuantity: (id) => {
@@ -35,13 +36,14 @@ const store = (set, get) => ({
         state.cart[state.cart.findIndex((item) => item.itemId === id)]
           .quantity--;
       });
+      window.location.reload();
     }
   },
   removeFromCart: (id) => {
-    // console.log(id);
     set((state) => ({
       cart: state.cart.filter((item) => item.itemId !== id),
     }));
+    window.location.reload();
   },
   clearCart: () => {
     set((state) => ({
