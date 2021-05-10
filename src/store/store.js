@@ -50,6 +50,11 @@ const store = (set, get) => ({
       cart: [],
     }));
   },
+  checkOut: () => {
+    set((state) => ({
+      cart: [],
+    }));
+  },
 });
 
 const useStore = create(devtools(persist(store)));

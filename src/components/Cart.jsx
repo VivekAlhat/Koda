@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { List, Image, Button } from "semantic-ui-react";
+import { ToastContainer, toast } from "react-toastify";
 import useStore from "../store/store";
 import "./css/cart.css";
 
 const Cart = () => {
   const history = useHistory();
+  const notify = () =>
+    toast("Order placed!", { position: "bottom-right", type: "success" });
   const cart = useStore((state) => state.cart);
   const addToCart = useStore((state) => state.addToCart);
   const decreaseQuantity = useStore((state) => state.decreaseQuantity);
   const removeFromCart = useStore((state) => state.removeFromCart);
   const clearCart = useStore((state) => state.clearCart);
+  const checkOut = useStore((state) => state.checkOut);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -22,6 +26,7 @@ const Cart = () => {
 
   return (
     <div className="cart">
+      <ToastContainer />
       {cart.length > 0 ? (
         <div>
           <h2 style={{ textAlign: "center" }}>Your Cart</h2>
@@ -80,7 +85,14 @@ const Cart = () => {
               >
                 Clear
               </Button>
-              <Button color="violet" size="large">
+              <Button
+                color="violet"
+                size="large"
+                onClick={() => {
+                  notify();
+                  checkOut();
+                }}
+              >
                 Checkout
               </Button>
             </div>
